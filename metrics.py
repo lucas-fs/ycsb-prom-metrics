@@ -4,6 +4,7 @@ import pytz
 import time
 import json
 
+from statistics import mean
 from collections import defaultdict
 from datetime import datetime
 from numpy import nan as NaN
@@ -82,29 +83,32 @@ def trunc(original_list, trunc_values):
         return original_list
 
 
-def group_metrics_by_nodes(logs, truncate=None):
-    grouped_metrics = defaultdict(lambda: defaultdict(lambda: defaultdict(dict)))
+def aggregate_metric_by_nodes(metrics, metric_to_aggregate, trunc_values=None):
+    aggregated_metrics = []
 
-    for rc in list(logs):
-        for wk in list(logs[rc]):
-            node_executions = defaultdict(lambda: defaultdict(list))
-            durations = []
+    for database in list(metrics):
+        for replication_f in list(metrics[database]):
+            for recordcount in list(metrics[database][replication_f]):
+                for workload in list(metrics[database][replication_f][recordcount]):
+                    for execution in trunc(list(metrics[database][replication_f][recordcount][workload]), trunc_values):
+                        execution_metrics = metrics[database][replication_f][recordcount][workload][execution]
+                        data_row = {
+                            "database": str(database),
+                            "replication_factor": str(replication_f),
+                            "recordcount": str(recordcount),
+                            "workload": str(workload),
+                            "execution": str(execution),
+                            "start": str(to_datetime(execution_metrics["start"])),
+                            "end": str(to_datetime(execution_metrics["end"])),
+                            "duration": execution_metrics["duration"]
+                        }
 
-            for ex in trunc(list(logs[rc][wk]), truncate):
-                durations.append(float(logs[rc][wk][ex]['duration']))
+                        for node, exe_metrics in execution_metrics[str(metric_to_aggregate)].items():
+                            data_row[node] = mean(exe_metrics)
 
-                for node in list(logs[rc][wk][ex]['cpu_usage']):
-                    execution = logs[rc][wk][ex]['cpu_usage'][node]
-                    node_executions[node][ex] = execution
-
-            grouped_metrics[rc][wk]['durations'] = durations
-
-            for node in list(node_executions):
-                execs = align_lists(node_executions[node])
-                frame = pd.DataFrame(execs)
-                grouped_metrics[rc][wk]['cpu_usage'][node] = frame
-
-    return grouped_metrics
+                        aggregated_metrics.append(data_row)
+                        
+    return aggregated_metrics
 
 
 def generate_metrics_json(execution_logs, queries, filename):
@@ -125,13 +129,13 @@ def generate_metrics_json(execution_logs, queries, filename):
         nodes = json.load(nodes_file)
 
     for log in tqdm(execution_logs, desc="Collecting Prometheus metrics"):
-        execution = {}
+        execution_metrics = {}
 
         start = to_unix_timestamp(str(log.get("start")))
         end = to_unix_timestamp(str(log.get("end")))
         window = WINDOW_STEPS * STEP_RESOLUTION
 
-        execution = {
+        execution_metrics = {
             'start': start,
             'end': end,
             'duration': (end-start),
@@ -139,7 +143,7 @@ def generate_metrics_json(execution_logs, queries, filename):
         }
 
         for query_name, query in queries.items():
-            execution[query_name] = prom_get_range_metrics(
+            execution_metrics[query_name] = prom_get_range_metrics(
                 query=query,
                 start_time=start,
                 end_time=end,
@@ -154,7 +158,9 @@ def generate_metrics_json(execution_logs, queries, filename):
         workload = str(log.get("workload"))
         execution = str(log.get("execution"))
 
-        metrics[database][replication_factor][recordcount][workload][execution] = execution
+        metrics[database][replication_factor][recordcount][workload][execution] = execution_metrics
 
     with open(str(filename), 'w') as metrics_file:
         json.dump(metrics, metrics_file, indent=4, ensure_ascii=False)
+
+    return metrics

@@ -6,7 +6,7 @@ from prom_queries import *
 if __name__ == "__main__":
 
     executions_logs = {}
-    with open('raw_logs.json', 'r') as raw_logfile:
+    with open('raw_logs_13-09-21-00:03:09.json', 'r') as raw_logfile:
         executions_logs = json.load(raw_logfile)
 
     queries = {
@@ -19,6 +19,6 @@ if __name__ == "__main__":
         'swap_usage': q_nodes_swap_usage
     }
 
-    generate_metrics_json(executions_logs, queries, "ycsb_execution_metrics.json")
+    metrics_data = generate_metrics_json(executions_logs, queries, "ycsb_execution_metrics.json")
 
     print("DONE!")
