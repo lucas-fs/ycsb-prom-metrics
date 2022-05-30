@@ -84,7 +84,7 @@ def trunc(original_list, trunc_values):
 
 
 def aggregate_metric_by_nodes(metrics, metric_to_aggregate, trunc_values=None):
-    aggregated_metrics = []
+    aggregated_metric = []
 
     for database in list(metrics):
         for replication_f in list(metrics[database]):
@@ -98,17 +98,17 @@ def aggregate_metric_by_nodes(metrics, metric_to_aggregate, trunc_values=None):
                             "recordcount": str(recordcount),
                             "workload": str(workload),
                             "execution": str(execution),
-                            "start": str(to_datetime(execution_metrics["start"])),
-                            "end": str(to_datetime(execution_metrics["end"])),
+                            "start": str(to_datetime(execution_metrics["start"]).strftime("%d-%m-%y %H:%M:%S")),
+                            "end": str(to_datetime(execution_metrics["end"]).strftime("%d-%m-%y %H:%M:%S")),
                             "duration": execution_metrics["duration"]
                         }
 
                         for node, exe_metrics in execution_metrics[str(metric_to_aggregate)].items():
                             data_row[node] = mean(exe_metrics)
 
-                        aggregated_metrics.append(data_row)
-                        
-    return aggregated_metrics
+                        aggregated_metric.append(data_row)
+
+    return aggregated_metric
 
 
 def generate_metrics_json(execution_logs, queries, filename):
@@ -164,3 +164,8 @@ def generate_metrics_json(execution_logs, queries, filename):
         json.dump(metrics, metrics_file, indent=4, ensure_ascii=False)
 
     return metrics
+
+
+def export_aggregated_metrics_csv(metric_data, filename):
+    metric_dataframe = pd.DataFrame(metric_data)
+    metric_dataframe.to_csv(str(filename), index_label="index")
