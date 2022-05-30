@@ -1,3 +1,6 @@
+# Deprecated! 
+# Keeping only for documentation
+
 import json
 
 from collections import defaultdict
