@@ -16,7 +16,8 @@ DATASETS_PATH = "metrics_datasets/"
 if __name__ == "__main__":
 
     executions_logs = {}
-    with open('raw_logs_13-09-21-00:03:09.json', 'r') as raw_logfile:
+    with open('raw_logs_merged.json', 'r') as raw_logfile:
+        print(f"Reading values from the raw_logs_merged.json file...")
         executions_logs = json.load(raw_logfile)
 
     queries = {
@@ -31,13 +32,26 @@ if __name__ == "__main__":
         "usb_storage_used_space_bytes": Q_NODES_STORAGE_USED_SPACE
     }
 
-    metrics_data = generate_metrics_json(executions_logs, queries, "ycsb_execution_metrics.json")
+    # metrics_data = generate_metrics_json(executions_logs, queries, "ycsb_execution_metrics.json")
+    metrics_data = {}
+    with open('ycsb_execution_metrics.json', 'r') as raw_logfile:
+        print(f"Reading values from the ycsb_execution_metrics.json file...")
+        metrics_data = json.load(raw_logfile)
 
     if not exists(DATASETS_PATH):
         makedirs(DATASETS_PATH)
 
+    nodes_count = 0
+    with open('nodes.json', 'r') as nodes_file:
+        nodes = json.load(nodes_file)
+        nodes_count = len(nodes.keys())
+
     for query_name in tqdm(queries.keys(), desc="Generating metrics datasets"):
         aggregated_metric = aggregate_metric_by_nodes(metrics_data, query_name)
-        export_aggregated_metrics_csv(aggregated_metric, f"{DATASETS_PATH}{query_name}.csv")
+        dataset_columns = list(aggregated_metric[0].keys())
+        start_columns = dataset_columns[:-nodes_count]
+        end_columns = sorted(dataset_columns[-nodes_count:])
+        dataset_column_order = [*start_columns, *end_columns]
+        export_aggregated_metrics_csv(aggregated_metric, f"{DATASETS_PATH}{query_name}.csv", dataset_column_order)
 
     print("FINISHED!")
