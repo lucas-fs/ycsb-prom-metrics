@@ -32,11 +32,11 @@ if __name__ == "__main__":
         "usb_storage_used_space_bytes": Q_NODES_STORAGE_USED_SPACE
     }
 
-    # metrics_data = generate_metrics_json(executions_logs, queries, "ycsb_execution_metrics.json")
-    metrics_data = {}
-    with open('ycsb_execution_metrics.json', 'r') as raw_logfile:
-        print(f"Reading values from the ycsb_execution_metrics.json file...")
-        metrics_data = json.load(raw_logfile)
+    metrics_data = generate_metrics_json(executions_logs, queries, "ycsb_execution_metrics.json")
+    # metrics_data = {}
+    # with open('ycsb_execution_metrics.json', 'r') as raw_logfile:
+    #     print(f"Reading values from the ycsb_execution_metrics.json file...")
+    #     metrics_data = json.load(raw_logfile)
 
     if not exists(DATASETS_PATH):
         makedirs(DATASETS_PATH)

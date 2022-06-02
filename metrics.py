@@ -104,7 +104,7 @@ def aggregate_metric_by_nodes(metrics, metric_to_aggregate, trunc_values=None):
                         }
 
                         for node, exe_metrics in execution_metrics[str(metric_to_aggregate)].items():
-                            data_row[node] = mean(exe_metrics)
+                            data_row[node] = round(mean(exe_metrics), 3)
 
                         aggregated_metric.append(data_row)
 
