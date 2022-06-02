@@ -161,11 +161,13 @@ def generate_metrics_json(execution_logs, queries, filename):
         metrics[database][replication_factor][recordcount][workload][execution] = execution_metrics
 
     with open(str(filename), 'w') as metrics_file:
+        print(f"Writing values to the {str(filename)} file...")
         json.dump(metrics, metrics_file, indent=4, ensure_ascii=False)
 
     return metrics
 
 
-def export_aggregated_metrics_csv(metric_data, filename):
+def export_aggregated_metrics_csv(metric_data, filename, column_order):
     metric_dataframe = pd.DataFrame(metric_data)
+    metric_dataframe = metric_dataframe.reindex(columns=column_order)
     metric_dataframe.to_csv(str(filename), index_label="index")
