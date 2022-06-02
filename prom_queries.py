@@ -6,7 +6,7 @@ Q_NODES_CPU_USAGE_PERCENTAGE = (
 )
 
 Q_NODES_CPU_IOWAIT_PERCENTAGE = (
-    'avg by (job)(irate(node_cpu_seconds_total{mode="iowait", job=~"rpi3.*"}'
+    'avg by (instance)(irate(node_cpu_seconds_total{mode="iowait", job=~"rpi3.*"}'
     f'[{IRATE_RANGE}])) * 100'
 )
 
