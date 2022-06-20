@@ -1,0 +1,110 @@
+/usr/local/openjdk-11/bin/java -cp /opt/ycsb/slf4j-api-1.7.30.jar:/opt/ycsb/slf4j-simple-1.7.30.jar:/opt/ycsb/jdbc-binding/lib/postgresql-42.2.14.jar:/opt/ycsb/cassandra-binding/conf:/opt/ycsb/conf:/opt/ycsb/lib/jackson-mapper-asl-1.9.4.jar:/opt/ycsb/lib/core-0.18.0-SNAPSHOT.jar:/opt/ycsb/lib/htrace-core4-4.1.0-incubating.jar:/opt/ycsb/lib/HdrHistogram-2.1.4.jar:/opt/ycsb/lib/jackson-core-asl-1.9.4.jar:/opt/ycsb/cassandra-binding/lib/slf4j-api-1.7.25.jar:/opt/ycsb/cassandra-binding/lib/netty-transport-4.0.33.Final.jar:/opt/ycsb/cassandra-binding/lib/netty-handler-4.0.33.Final.jar:/opt/ycsb/cassandra-binding/lib/guava-16.0.1.jar:/opt/ycsb/cassandra-binding/lib/cassandra-binding-0.18.0-SNAPSHOT.jar:/opt/ycsb/cassandra-binding/lib/netty-codec-4.0.33.Final.jar:/opt/ycsb/cassandra-binding/lib/netty-common-4.0.33.Final.jar:/opt/ycsb/cassandra-binding/lib/cassandra-driver-core-3.0.0.jar:/opt/ycsb/cassandra-binding/lib/metrics-core-3.1.2.jar:/opt/ycsb/cassandra-binding/lib/netty-buffer-4.0.33.Final.jar site.ycsb.Client -db site.ycsb.db.CassandraCQLClient -s -p hosts=10.0.2.5 -P /opt/ycsb/workloads/workloadc -p recordcount=1000000 -p rectime=3000 -p cassandra.connecttimeoutmillis=60000 -p cassandra.readtimeoutmillis=60000 -p cassandra.readconsistencylevel=ONE -p cassandra.writeconsistencylevel=ONE -p operationcount=10000 -t
+Command line: -db site.ycsb.db.CassandraCQLClient -s -p hosts=10.0.2.5 -P /opt/ycsb/workloads/workloadc -p recordcount=1000000 -p rectime=3000 -p cassandra.connecttimeoutmillis=60000 -p cassandra.readtimeoutmillis=60000 -p cassandra.readconsistencylevel=ONE -p cassandra.writeconsistencylevel=ONE -p operationcount=10000 -t
+YCSB Client 0.18.0-SNAPSHOT
+
+Loading workload...
+Starting test.
+2021-09-14 09:59:06:000 0 sec: 0 operations; est completion in 0 second 
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by io.netty.util.internal.PlatformDependent0 (file:/opt/ycsb/cassandra-binding/lib/netty-common-4.0.33.Final.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of io.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[Thread-2] INFO io.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[Thread-2] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[Thread-2] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.14:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.15:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.16:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.17:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.18:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.19:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.20:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.21:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.5:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.8:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.9:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.10:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.11:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.12:9042 added
+[Thread-2] INFO com.datastax.driver.core.Cluster - New Cassandra host /10.0.2.13:9042 added
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Connected to cluster: Test Cluster
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.14; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.15; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.16; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.17; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.18; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.19; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.20; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.21; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.5; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.8; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.9; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.10; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.11; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.12; Rack: rack1
+
+[Thread-2] INFO site.ycsb.db.CassandraCQLClient - Datacenter: datacenter1; Host: /10.0.2.13; Rack: rack1
+
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+2021-09-14 09:59:15:948 10 sec: 0 operations; est completion in 106751991167300 days 15 hours 
+2021-09-14 09:59:25:948 20 sec: 0 operations; est completion in 106751991167300 days 15 hours 
+2021-09-14 09:59:35:948 30 sec: 0 operations; est completion in 106751991167300 days 15 hours 
+2021-09-14 09:59:45:948 40 sec: 0 operations; est completion in 106751991167300 days 15 hours 
+2021-09-14 09:59:55:948 50 sec: 0 operations; est completion in 106751991167300 days 15 hours 
+2021-09-14 10:00:05:948 60 sec: 0 operations; est completion in 106751991167300 days 15 hours 
+[cluster1-nio-worker-1] WARN com.datastax.driver.core.Connection - Timeout while setting keyspace on Connection[/10.0.2.5:9042-2, inFlight=1, closed=false]. This should not happen but is not critical (it will be retried)
+2021-09-14 10:00:15:947 70 sec: 367 operations; 36.7 current ops/sec; est completion in 30 minutes [READ: Count=368, Max=60293119, Min=8864, Avg=184583.2, 90=30319, 99=37695, 99.9=60293119, 99.99=60293119] 
+2021-09-14 10:00:25:947 80 sec: 911 operations; 54.4 current ops/sec; est completion in 13 minutes [READ: Count=543, Max=56191, Min=7560, Avg=18316.56, 90=25743, 99=34047, 99.9=49471, 99.99=56191] 
+2021-09-14 10:00:35:948 90 sec: 1531 operations; 62 current ops/sec; est completion in 8 minutes [READ: Count=620, Max=44447, Min=6912, Avg=16085.64, 90=22783, 99=31375, 99.9=41215, 99.99=44447] 
+2021-09-14 10:00:45:948 100 sec: 2155 operations; 62.4 current ops/sec; est completion in 6 minutes [READ: Count=624, Max=49631, Min=6524, Avg=15950.63, 90=22719, 99=30127, 99.9=49599, 99.99=49631] 
+2021-09-14 10:00:55:947 110 sec: 2816 operations; 66.1 current ops/sec; est completion in 4 minutes [READ: Count=662, Max=34047, Min=5844, Avg=15082.83, 90=21599, 99=29855, 99.9=33023, 99.99=34047] 
+2021-09-14 10:01:05:947 120 sec: 3464 operations; 64.8 current ops/sec; est completion in 3 minutes [READ: Count=647, Max=54495, Min=5852, Avg=15407.77, 90=22783, 99=34527, 99.9=49087, 99.99=54495] 
+2021-09-14 10:01:15:947 130 sec: 4102 operations; 63.8 current ops/sec; est completion in 3 minutes [READ: Count=638, Max=49023, Min=6076, Avg=15626.58, 90=23551, 99=31695, 99.9=48607, 99.99=49023] 
+2021-09-14 10:01:25:948 140 sec: 4729 operations; 62.7 current ops/sec; est completion in 2 minutes [READ: Count=627, Max=60415, Min=6072, Avg=15904.67, 90=22495, 99=37023, 99.9=55679, 99.99=60415] 
+2021-09-14 10:01:35:947 150 sec: 5377 operations; 64.8 current ops/sec; est completion in 2 minutes [READ: Count=648, Max=67391, Min=5952, Avg=15379.15, 90=23615, 99=33759, 99.9=50463, 99.99=67391] 
+2021-09-14 10:01:45:947 160 sec: 6027 operations; 65 current ops/sec; est completion in 1 minute [READ: Count=650, Max=46015, Min=6040, Avg=15350.62, 90=21983, 99=30575, 99.9=38911, 99.99=46015] 
+2021-09-14 10:01:55:947 170 sec: 6705 operations; 67.8 current ops/sec; est completion in 1 minute [READ: Count=678, Max=37055, Min=6200, Avg=14719.27, 90=22207, 99=27519, 99.9=35935, 99.99=37055] 
+2021-09-14 10:02:05:947 180 sec: 7405 operations; 70 current ops/sec; est completion in 1 minute [READ: Count=700, Max=35967, Min=5100, Avg=14264.77, 90=21423, 99=28079, 99.9=35583, 99.99=35967] 
+2021-09-14 10:02:15:947 190 sec: 8112 operations; 70.7 current ops/sec; est completion in 45 seconds [READ: Count=707, Max=51839, Min=5380, Avg=14125.82, 90=20863, 99=27791, 99.9=46495, 99.99=51839] 
+2021-09-14 10:02:25:947 200 sec: 8837 operations; 72.5 current ops/sec; est completion in 27 seconds [READ: Count=725, Max=33215, Min=5708, Avg=13775.26, 90=20383, 99=26927, 99.9=32575, 99.99=33215] 
+2021-09-14 10:02:35:947 210 sec: 9517 operations; 68 current ops/sec; est completion in 11 seconds [READ: Count=680, Max=58111, Min=5464, Avg=14696.92, 90=21727, 99=30303, 99.9=47487, 99.99=58111] 
+2021-09-14 10:02:45:696 219 sec: 10000 operations; 49.54 current ops/sec; [READ: Count=483, Max=51327, Min=6064, Avg=15515.71, 90=22031, 99=32015, 99.9=51327, 99.99=51327] [CLEANUP: Count=1, Max=2246655, Min=2244608, Avg=2245632, 90=2246655, 99=2246655, 99.9=2246655, 99.99=2246655] 
+[OVERALL], RunTime(ms), 219750
+[OVERALL], Throughput(ops/sec), 45.50625711035267
+[TOTAL_GCS_G1_Young_Generation], Count, 17
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 121
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.05506257110352673
+[TOTAL_GCS_G1_Old_Generation], Count, 0
+[TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
+[TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
+[TOTAL_GCs], Count, 17
+[TOTAL_GC_TIME], Time(ms), 121
+[TOTAL_GC_TIME_%], Time(%), 0.05506257110352673
+[READ], Operations, 10000
+[READ], AverageLatency(us), 21506.5038
+[READ], MinLatency(us), 5100
+[READ], MaxLatency(us), 60293119
+[READ], 95thPercentileLatency(us), 25471
+[READ], 99thPercentileLatency(us), 32479
+[READ], Return=OK, 10000
+[CLEANUP], Operations, 1
+[CLEANUP], AverageLatency(us), 2245632.0
+[CLEANUP], MinLatency(us), 2244608
+[CLEANUP], MaxLatency(us), 2246655
+[CLEANUP], 95thPercentileLatency(us), 2246655
+[CLEANUP], 99thPercentileLatency(us), 2246655

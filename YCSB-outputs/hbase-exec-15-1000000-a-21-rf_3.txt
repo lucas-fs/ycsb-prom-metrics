@@ -1,0 +1,85 @@
+/usr/local/openjdk-11/bin/java -cp //opt/hbase-2.2.7-client/conf:/opt/ycsb/hbase2-binding/conf:/opt/ycsb/conf:/opt/ycsb/lib/jackson-mapper-asl-1.9.4.jar:/opt/ycsb/lib/core-0.18.0-SNAPSHOT.jar:/opt/ycsb/lib/htrace-core4-4.1.0-incubating.jar:/opt/ycsb/lib/HdrHistogram-2.1.4.jar:/opt/ycsb/lib/jackson-core-asl-1.9.4.jar:/opt/ycsb/hbase2-binding/lib/commons-logging-1.2.jar:/opt/ycsb/hbase2-binding/lib/hbase2-binding-0.18.0-SNAPSHOT.jar:/opt/ycsb/hbase2-binding/lib/findbugs-annotations-1.3.9-1.jar:/opt/ycsb/hbase2-binding/lib/slf4j-api-1.7.25.jar:/opt/ycsb/hbase2-binding/lib/audience-annotations-0.5.0.jar:/opt/ycsb/hbase2-binding/lib/log4j-1.2.17.jar:/opt/ycsb/hbase2-binding/lib/htrace-core4-4.1.0-incubating.jar:/opt/ycsb/hbase2-binding/lib/hbase-shaded-client-2.2.3.jar:/opt/ycsb/hbase2-binding/lib/slf4j-log4j12-1.7.25.jar site.ycsb.Client -db site.ycsb.db.hbase2.HBaseClient2 -s -P /opt/ycsb/workloads/workloada -p table=usertable -p columnfamily=family -p recordcount=1000000 -p operationcount=10000 -t
+Command line: -db site.ycsb.db.hbase2.HBaseClient2 -s -P /opt/ycsb/workloads/workloada -p table=usertable -p columnfamily=family -p recordcount=1000000 -p operationcount=10000 -t
+YCSB Client 0.18.0-SNAPSHOT
+
+Loading workload...
+Starting test.
+2021-09-12 10:55:27:241 0 sec: 0 operations; est completion in 0 second 
+2021-09-12 10:55:27,312 WARN  [Thread-3] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/opt/ycsb/hbase2-binding/lib/hbase-shaded-client-2.2.3.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2021-09-12 10:55:27,657 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:zookeeper.version=3.4.10-39d3a4f269333c922ed3db283be479f9deacaa0f, built on 03/23/2017 10:13 GMT
+2021-09-12 10:55:27,657 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:host.name=85bbf37f4576
+2021-09-12 10:55:27,657 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:java.version=11.0.12
+2021-09-12 10:55:27,657 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:java.vendor=Oracle Corporation
+2021-09-12 10:55:27,658 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:java.home=/usr/local/openjdk-11
+2021-09-12 10:55:27,658 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:java.class.path=//opt/hbase-2.2.7-client/conf:/opt/ycsb/hbase2-binding/conf:/opt/ycsb/conf:/opt/ycsb/lib/jackson-mapper-asl-1.9.4.jar:/opt/ycsb/lib/core-0.18.0-SNAPSHOT.jar:/opt/ycsb/lib/htrace-core4-4.1.0-incubating.jar:/opt/ycsb/lib/HdrHistogram-2.1.4.jar:/opt/ycsb/lib/jackson-core-asl-1.9.4.jar:/opt/ycsb/hbase2-binding/lib/commons-logging-1.2.jar:/opt/ycsb/hbase2-binding/lib/hbase2-binding-0.18.0-SNAPSHOT.jar:/opt/ycsb/hbase2-binding/lib/findbugs-annotations-1.3.9-1.jar:/opt/ycsb/hbase2-binding/lib/slf4j-api-1.7.25.jar:/opt/ycsb/hbase2-binding/lib/audience-annotations-0.5.0.jar:/opt/ycsb/hbase2-binding/lib/log4j-1.2.17.jar:/opt/ycsb/hbase2-binding/lib/htrace-core4-4.1.0-incubating.jar:/opt/ycsb/hbase2-binding/lib/hbase-shaded-client-2.2.3.jar:/opt/ycsb/hbase2-binding/lib/slf4j-log4j12-1.7.25.jar
+2021-09-12 10:55:27,658 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:java.library.path=/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+2021-09-12 10:55:27,658 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:java.io.tmpdir=/tmp
+2021-09-12 10:55:27,659 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:java.compiler=<NA>
+2021-09-12 10:55:27,659 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:os.name=Linux
+2021-09-12 10:55:27,659 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:os.arch=amd64
+2021-09-12 10:55:27,659 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:os.version=4.19.0-17-amd64
+2021-09-12 10:55:27,659 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:user.name=root
+2021-09-12 10:55:27,659 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:user.home=/root
+2021-09-12 10:55:27,659 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Client environment:user.dir=/
+2021-09-12 10:55:27,665 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Initiating client connection, connectString=hmaster:2181,hregion1:2181,hregion2:2181 sessionTimeout=90000 watcher=org.apache.hadoop.hbase.zookeeper.ReadOnlyZKClient$$Lambda$83/0x0000000840145c40@876a59d
+2021-09-12 10:55:27,687 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc-SendThread(hbase_hregion1.1.r769gpkpunxa9hf3aogcitrf1.pi-cluster-net:2181)] zookeeper.ClientCnxn: Opening socket connection to server hbase_hregion1.1.r769gpkpunxa9hf3aogcitrf1.pi-cluster-net/10.0.2.10:2181. Will not attempt to authenticate using SASL (unknown error)
+2021-09-12 10:55:27,701 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc-SendThread(hbase_hregion1.1.r769gpkpunxa9hf3aogcitrf1.pi-cluster-net:2181)] zookeeper.ClientCnxn: Socket connection established to hbase_hregion1.1.r769gpkpunxa9hf3aogcitrf1.pi-cluster-net/10.0.2.10:2181, initiating session
+2021-09-12 10:55:27,730 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc-SendThread(hbase_hregion1.1.r769gpkpunxa9hf3aogcitrf1.pi-cluster-net:2181)] zookeeper.ClientCnxn: Session establishment complete on server hbase_hregion1.1.r769gpkpunxa9hf3aogcitrf1.pi-cluster-net/10.0.2.10:2181, sessionid = 0x17bd6d64427001d, negotiated timeout = 90000
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+2021-09-12 10:55:37:207 10 sec: 409 operations; 40.9 current ops/sec; est completion in 3 minutes [READ: Count=197, Max=96639, Min=7984, Avg=21838.83, 90=35583, 99=69695, 99.9=96639, 99.99=96639] [UPDATE: Count=212, Max=165375, Min=11728, Avg=20860.64, 90=23679, 99=81791, 99.9=165375, 99.99=165375] 
+2021-09-12 10:55:47:207 20 sec: 950 operations; 54.11 current ops/sec; est completion in 3 minutes [READ: Count=288, Max=114303, Min=7032, Avg=19177.38, 90=32431, 99=44703, 99.9=114303, 99.99=114303] [UPDATE: Count=254, Max=78079, Min=10888, Avg=17497.48, 90=21167, 99=36799, 99.9=78079, 99.99=78079] 
+2021-09-12 10:55:57:207 30 sec: 1357 operations; 40.7 current ops/sec; est completion in 3 minutes [READ: Count=201, Max=182399, Min=6596, Avg=19751.31, 90=29327, 99=171007, 99.9=182399, 99.99=182399] [UPDATE: Count=205, Max=2527231, Min=10512, Avg=29235.34, 90=19887, 99=28527, 99.9=2527231, 99.99=2527231] 
+2021-09-12 10:56:07:207 40 sec: 1941 operations; 58.4 current ops/sec; est completion in 2 minutes [READ: Count=287, Max=93119, Min=6448, Avg=18201.65, 90=28927, 99=45599, 99.9=93119, 99.99=93119] [UPDATE: Count=297, Max=32591, Min=9128, Avg=15936.89, 90=18687, 99=22943, 99.9=32591, 99.99=32591] 
+2021-09-12 10:56:17:207 50 sec: 2498 operations; 55.7 current ops/sec; est completion in 2 minutes [READ: Count=288, Max=116287, Min=6220, Avg=19552.75, 90=34751, 99=53759, 99.9=116287, 99.99=116287] [UPDATE: Count=269, Max=102591, Min=8952, Avg=16123.41, 90=18575, 99=32399, 99.9=102591, 99.99=102591] 
+2021-09-12 10:56:27:207 60 sec: 2941 operations; 44.3 current ops/sec; est completion in 2 minutes [READ: Count=217, Max=205951, Min=6588, Avg=21644.13, 90=36319, 99=122047, 99.9=205951, 99.99=205951] [UPDATE: Count=226, Max=118399, Min=9000, Avg=16719.77, 90=19247, 99=70463, 99.9=118399, 99.99=118399] 
+2021-09-12 10:56:27,981 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc] zookeeper.ZooKeeper: Session: 0x17bd6d64427001d closed
+2021-09-12 10:56:27,986 INFO  [ReadOnlyZKClient-hmaster:2181,hregion1:2181,hregion2:2181@0x5f22e8dc-EventThread] zookeeper.ClientCnxn: EventThread shut down for session: 0x17bd6d64427001d
+2021-09-12 10:56:37:207 70 sec: 3418 operations; 47.7 current ops/sec; est completion in 2 minutes [READ: Count=244, Max=192127, Min=6528, Avg=18999.5, 90=32863, 99=74751, 99.9=192127, 99.99=192127] [UPDATE: Count=234, Max=3237887, Min=8336, Avg=29302.21, 90=19599, 99=106559, 99.9=3237887, 99.99=3237887] 
+2021-09-12 10:56:47:207 80 sec: 3964 operations; 54.6 current ops/sec; est completion in 2 minutes [READ: Count=271, Max=163711, Min=6448, Avg=20182.6, 90=32895, 99=59423, 99.9=163711, 99.99=163711] [UPDATE: Count=274, Max=118591, Min=8952, Avg=16403.28, 90=19215, 99=74943, 99.9=118591, 99.99=118591] 
+2021-09-12 10:56:57:207 90 sec: 4536 operations; 57.2 current ops/sec; est completion in 1 minute [READ: Count=303, Max=145919, Min=6212, Avg=18871.62, 90=32863, 99=41823, 99.9=145919, 99.99=145919] [UPDATE: Count=269, Max=123327, Min=9424, Avg=15717.55, 90=17807, 99=60799, 99.9=123327, 99.99=123327] 
+2021-09-12 10:57:07:207 100 sec: 5142 operations; 60.6 current ops/sec; est completion in 1 minute [READ: Count=310, Max=81087, Min=6444, Avg=18340.97, 90=31455, 99=55423, 99.9=81087, 99.99=81087] [UPDATE: Count=297, Max=82751, Min=8696, Avg=14539.89, 90=16735, 99=32799, 99.9=82751, 99.99=82751] 
+2021-09-12 10:57:17:207 110 sec: 5743 operations; 60.1 current ops/sec; est completion in 1 minute [READ: Count=297, Max=132479, Min=6336, Avg=18773.34, 90=30207, 99=75711, 99.9=132479, 99.99=132479] [UPDATE: Count=303, Max=246271, Min=7796, Avg=14471.89, 90=16479, 99=23023, 99.9=246271, 99.99=246271] 
+2021-09-12 10:57:27:207 120 sec: 6354 operations; 61.1 current ops/sec; est completion in 1 minute [READ: Count=301, Max=134783, Min=6000, Avg=18801.23, 90=32399, 99=53503, 99.9=134783, 99.99=134783] [UPDATE: Count=311, Max=114111, Min=8248, Avg=13910.2, 90=16751, 99=25007, 99.9=114111, 99.99=114111] 
+2021-09-12 10:57:37:206 130 sec: 6977 operations; 62.3 current ops/sec; est completion in 57 seconds [READ: Count=324, Max=74687, Min=6660, Avg=17925.43, 90=31775, 99=43551, 99.9=74687, 99.99=74687] [UPDATE: Count=298, Max=117951, Min=8496, Avg=13985.74, 90=16735, 99=27407, 99.9=117951, 99.99=117951] 
+2021-09-12 10:57:47:207 140 sec: 7353 operations; 37.6 current ops/sec; est completion in 51 seconds [READ: Count=187, Max=114815, Min=6224, Avg=20741.54, 90=33695, 99=101887, 99.9=114815, 99.99=114815] [UPDATE: Count=189, Max=3221503, Min=8064, Avg=32345.02, 90=17247, 99=108159, 99.9=3221503, 99.99=3221503] 
+2021-09-12 10:57:57:207 150 sec: 7965 operations; 61.2 current ops/sec; est completion in 39 seconds [READ: Count=320, Max=78015, Min=6180, Avg=18269.93, 90=32831, 99=49695, 99.9=78015, 99.99=78015] [UPDATE: Count=292, Max=154623, Min=7840, Avg=14175.53, 90=15903, 99=56063, 99.9=154623, 99.99=154623] 
+2021-09-12 10:58:07:207 160 sec: 8555 operations; 59 current ops/sec; est completion in 28 seconds [READ: Count=305, Max=82879, Min=6176, Avg=18753.38, 90=31759, 99=55263, 99.9=82879, 99.99=82879] [UPDATE: Count=285, Max=126783, Min=8472, Avg=14626.86, 90=16127, 99=49023, 99.9=126783, 99.99=126783] 
+2021-09-12 10:58:17:207 170 sec: 9111 operations; 55.6 current ops/sec; est completion in 17 seconds [READ: Count=268, Max=149759, Min=6540, Avg=19199.47, 90=31423, 99=101951, 99.9=149759, 99.99=149759] [UPDATE: Count=288, Max=916991, Min=8768, Avg=17155.89, 90=16167, 99=37151, 99.9=916991, 99.99=916991] 
+2021-09-12 10:58:27:207 180 sec: 9660 operations; 54.9 current ops/sec; est completion in 7 second [READ: Count=287, Max=461823, Min=5924, Avg=19896.19, 90=29055, 99=65919, 99.9=461823, 99.99=461823] [UPDATE: Count=262, Max=146303, Min=8424, Avg=16299.83, 90=17295, 99=94783, 99.9=146303, 99.99=146303] 
+2021-09-12 10:58:32:424 185 sec: 10000 operations; 65.16 current ops/sec; [READ: Count=172, Max=70783, Min=5916, Avg=16824.93, 90=26383, 99=34015, 99.9=70783, 99.99=70783] [CLEANUP: Count=2, Max=13223, Min=18, Avg=6619, 90=13223, 99=13223, 99.9=13223, 99.99=13223] [UPDATE: Count=168, Max=29135, Min=8728, Avg=13724.19, 90=16311, 99=21071, 99.9=29135, 99.99=29135] 
+[OVERALL], RunTime(ms), 185218
+[OVERALL], Throughput(ops/sec), 53.99043289529095
+[TOTAL_GCS_G1_Young_Generation], Count, 6
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 83
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.0448120593030915
+[TOTAL_GCS_G1_Old_Generation], Count, 0
+[TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
+[TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
+[TOTAL_GCs], Count, 6
+[TOTAL_GC_TIME], Time(ms), 83
+[TOTAL_GC_TIME_%], Time(%), 0.0448120593030915
+[READ], Operations, 5067
+[READ], AverageLatency(us), 19161.915531872903
+[READ], MinLatency(us), 5916
+[READ], MaxLatency(us), 461823
+[READ], 95thPercentileLatency(us), 36351
+[READ], 99thPercentileLatency(us), 69695
+[READ], Return=OK, 5067
+[CLEANUP], Operations, 2
+[CLEANUP], AverageLatency(us), 6619.0
+[CLEANUP], MinLatency(us), 18
+[CLEANUP], MaxLatency(us), 13223
+[CLEANUP], 95thPercentileLatency(us), 13223
+[CLEANUP], 99thPercentileLatency(us), 13223
+[UPDATE], Operations, 4933
+[UPDATE], AverageLatency(us), 17519.522400162172
+[UPDATE], MinLatency(us), 7796
+[UPDATE], MaxLatency(us), 3237887
+[UPDATE], 95thPercentileLatency(us), 20655
+[UPDATE], 99thPercentileLatency(us), 63615
+[UPDATE], Return=OK, 4933
