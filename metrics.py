@@ -171,3 +171,47 @@ def export_aggregated_metrics_csv(metric_data, filename, column_order):
     metric_dataframe = pd.DataFrame(metric_data)
     metric_dataframe = metric_dataframe.reindex(columns=column_order)
     metric_dataframe.to_csv(str(filename), index_label="index")
+
+
+def get_metric_samples_count(metric_dict):
+    return min([len(sample) for sample in metric_dict.values()])
+
+
+def export_all_metric_samples_dataset(metrics, metric_to_export, filename, column_order, trunc_values=None):
+    metric_dataset_rows = []
+
+    for database in list(metrics):
+        for replication_f in list(metrics[database]):
+            for recordcount in list(metrics[database][replication_f]):
+                for workload in list(metrics[database][replication_f][recordcount]):
+                    for execution in trunc(list(metrics[database][replication_f][recordcount][workload]), trunc_values):
+                        execution_metrics = metrics[database][replication_f][recordcount][workload][execution]
+                        data_row = {
+                            "database": str(database),
+                            "replication_factor": str(replication_f),
+                            "recordcount": str(recordcount),
+                            "workload": str(workload),
+                            "execution": str(execution),
+                            "start": str(to_datetime(execution_metrics["start"]).strftime("%d-%m-%y %H:%M:%S")),
+                            "end": str(to_datetime(execution_metrics["end"]).strftime("%d-%m-%y %H:%M:%S")),
+                            "duration": execution_metrics["duration"]
+                        }
+
+                        nodes = list(execution_metrics[str(metric_to_export)])
+                        samples_count = get_metric_samples_count(
+                            execution_metrics[str(metric_to_export)]
+                        )
+
+                        for sample_index in range(samples_count):
+                            partial_data_row = {}
+                            partial_data_row["metric_sample_index"] = sample_index + 1
+                            for node in nodes:
+                                partial_data_row[node] = round(
+                                    execution_metrics[str(metric_to_export)][node][sample_index], 3)
+                            metric_dataset_rows.append(dict(data_row, **partial_data_row))
+
+    metric_dataframe = pd.DataFrame(metric_dataset_rows)
+    metric_dataframe = metric_dataframe.reindex(columns=column_order)
+    metric_dataframe.to_csv(str(filename), index_label="index")
+
+    return metric_dataframe
